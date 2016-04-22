@@ -1,0 +1,19 @@
+{
+  "startdate": "12/20/2015",
+  "accounts": {
+    "Car": {
+      "balances": [1,
+                   2,
+                   3,
+                   4],
+      "shaded": false
+    },
+    "Balance": {
+      "balances": [5,
+                   4,
+                   3,
+                   5],
+      "shaded": true
+    }
+  }
+}
