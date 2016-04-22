@@ -1,20 +1,19 @@
-  $(function() {
+var forecast;
 
-    var d1 = [];
-    for (var i = 0; i < 14; i += 0.5) {
-      d1.push([i, Math.sin(i)]);
+var data = $.ajax( {
+  url: 'data.json',
+  success: function(resp) {
+    forecast = resp;
+    lines = [];
+    for (var acct in forecast.accounts) {
+       var dataObject = {};
+       dataObject.label = acct;
+       dataObject.data = forecast.accounts[acct].balances;
+       lines.push(dataObject);
     }
-
-    var d2 = [[0, 3], [4, 8], [8, 5], [9, 13]];
-
-    // A null signifies separate line segments
-
-    var d3 = [[0, 12], [7, 12], null, [7, 2.5], [12, 2.5]];
-
-    $.plot("#placeholder", [ d1, d2, d3 ]);
-
-    // Add the Flot version string to the footer
-
+    $.plot("#placeholder", lines);
     $("#footer").prepend("Flot " + $.plot.version + " &ndash; ");
-  });
+  }
+});
+    // Add the Flot version string to the footer
 
